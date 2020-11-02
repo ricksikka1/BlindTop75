@@ -18,6 +18,7 @@ class Solution {
         List<List<Integer>> result = new ArrayList<>();
         
         Queue<TreeNode> q = new LinkedList<>();
+        // Basic BFS using a Queue
         
         q.add(root);
         while(!q.isEmpty()){
