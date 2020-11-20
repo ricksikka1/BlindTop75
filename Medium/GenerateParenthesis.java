@@ -1,20 +1,19 @@
-class Solution {
-    public List<String> generateParenthesis(int n) {
-        List<String> results = new ArrayList<>();
-        backtrack(results, "", n, 0, 0);
-        return results;
-    }
-    
-    public void backtrack(List<String> results, String curr, int n, int open, int close){
-        if (curr.length() == 2*n){
-            results.add(curr);
-        }
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        if n is 0:
+            return []
         
-        if(open < n){
-            backtrack(results, curr + '(', n, open+1, close);
-        }
-        if(close < open){
-            backtrack(results, curr + ')', n, open, close+1);
-        }
-    }
-}
+        result = []
+        curr = ""
+        self.backtrack(result, n, curr, 0, 0)
+        return result
+    
+    def backtrack(self, result, n, curr, op, cl):
+        if len(curr) is 2*n:
+            result.append(curr)
+        
+        if op < n:
+            self.backtrack(result, n, curr + "(", op+1, cl)
+        if cl < op:
+            self.backtrack(result, n, curr + ")", op, cl+1)
+        
