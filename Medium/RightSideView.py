@@ -5,7 +5,7 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+    def rightSideView(self, root: TreeNode) -> List[int]:
         if not root:
             return []
         
@@ -15,15 +15,15 @@ class Solution:
         
         while q:
             size = len(q)
-            tmp = []
             for i in range(size):
-                curr = q.pop(0)
-                if curr.left:
-                    q.append(curr.left)
-                if curr.right:
-                    q.append(curr.right)
-                tmp.append(curr.val)
-                
-            result.append(tmp)
-            
+                tmp = q.pop(0)
+                if tmp.left:
+                    q.append(tmp.left)
+                if tmp.right:
+                    q.append(tmp.right)
+                if i is size-1:
+                    result.append(tmp.val)
+                    
         return result
+            
+        
